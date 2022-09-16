@@ -24,10 +24,15 @@
         "@typescript-eslint"
     ],
     "rules": {
-      "react/prop-types": 0,
       "indent": ["error", 2],
+      "no-lone-blocks": "error",
       "linebreak-style": 0,
       "quotes": ["error", "single"],
+      "brace-style": ["error", "stroustrup", {"allowSingleLine": true}],
+      "space-before-blocks": "error",
+      "jsx-quotes": ["error", "prefer-single"],
+      "no-multi-spaces": "error",
+      "space-in-parens": ["error", "never"],
       "no-console": "error",
       "array-bracket-spacing": ["error", "never"],
       "arrow-spacing": ["error", { "before": true, "after": true }],
