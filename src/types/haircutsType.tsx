@@ -5,9 +5,12 @@ export type prestationType = {
   price:number
 }
 
-export type categoryType = {
-  title: 'Homme' | 'Femme' | 'Enfant',
-  reference: 'Man' | 'Woman' | 'Child',
+export type GenderType = {
+  title?: 'Homme' | 'Femme' | 'Enfant',
+  reference: 'Man' | 'Woman' | 'Child'
+}
+
+export type categoryType = GenderType & {
   prestations: prestationType[]
 }
 

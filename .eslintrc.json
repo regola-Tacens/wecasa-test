@@ -40,7 +40,10 @@
       "key-spacing": ["error", { "mode": "strict" }],
       "no-mixed-spaces-and-tabs": "error",
       "no-multiple-empty-lines": "error",
-      "no-trailing-spaces": "error"
+      "no-trailing-spaces": "error",
+      "block-spacing": ["error", "never"],
+      "comma-spacing": ["error", { "before": false, "after": true }],
+      "object-curly-spacing": ["error", "never"]
     },
     "settings": {
       "react": {

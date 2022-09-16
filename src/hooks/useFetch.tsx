@@ -1,5 +1,5 @@
 // library imports
-import { useQuery } from 'react-query';
+import {useQuery} from 'react-query';
 
 type useFetchProps = {
   queryRepo: string,
