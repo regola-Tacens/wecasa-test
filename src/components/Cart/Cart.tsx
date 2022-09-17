@@ -1,15 +1,16 @@
 // library imports
 import React from 'react';
 
-// helpers & store imports
-import {prestationsStoreType, usePrestationsStore} from '../../store/prestationsStore';
+// component imports
+import CartItemsByGender from './CartItemsByGender';
 
 const Cart = () => {
-  const prestations: prestationsStoreType = usePrestationsStore((state: any) => state.prestations)
 
   return (
     <div>
-      {JSON.stringify(prestations)}
+      <CartItemsByGender gender='Man' />
+      <CartItemsByGender gender='Woman' />
+      <CartItemsByGender gender='Child' />
     </div>
   )
 }
