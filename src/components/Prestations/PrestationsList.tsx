@@ -10,6 +10,7 @@ import '../../styles/prestations.css'
 
 // helpers
 import {formatPrice} from '../../helpers/formatPrice';
+import {usePrestationsStore} from '../../store/prestationsStore';
 
 type PrestationsListProps = {
   haircutsData: HaircutType,
@@ -17,6 +18,8 @@ type PrestationsListProps = {
 }
 
 const PrestationsList = ({haircutsData, gender}: PrestationsListProps) => {
+  const addPrestation = usePrestationsStore((state) => state.addPrestation)
+  const prestations = usePrestationsStore((state) => state.prestations)
 
   const prestationsByGender = useMemo(():prestationType[] => {
     return haircutsData?.categories?.filter((category: categoryType) =>
@@ -31,6 +34,12 @@ const PrestationsList = ({haircutsData, gender}: PrestationsListProps) => {
       </div>
     );
   };
+  const handleAddPrestation = (e) => {
+    // TODO CHECK IF THE SAME PRESTATION EXISTS IN STORE
+    const prestationAlreadyInStore = prestations?.find(prest => prest.reference === e.value.reference)
+    const quantity = prestationAlreadyInStore ? prestationAlreadyInStore.quantity + 1 : 1
+    addPrestation(e.value, quantity)
+  }
 
   return (
     <div>
@@ -44,7 +53,7 @@ const PrestationsList = ({haircutsData, gender}: PrestationsListProps) => {
             maxHeight: '250px',
             overflow: 'auto'}
         }
-        onChange={e => console.log(e.value)}
+        onChange={handleAddPrestation}
         itemTemplate={prestationsListTemplate}
       />
     </div>
