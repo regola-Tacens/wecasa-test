@@ -4,14 +4,14 @@ import {QueryClient, QueryClientProvider} from 'react-query';
 import {ReactQueryDevtools} from 'react-query/devtools';
 
 // component imports
-import Services from './Services/Services';
+import Prestations from './Prestations/Prestations';
 
 const App = () => {
   const queryClient = new QueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Services />
+      <Prestations />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   )

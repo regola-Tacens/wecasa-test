@@ -11,7 +11,7 @@ type ServicesGenderProps = {
   setGender: Dispatch<SetStateAction<GenderType>>
 }
 
-const ServicesGenderSelector = ({setGender}: ServicesGenderProps) => {
+const PrestationsGenderSelector = ({setGender}: ServicesGenderProps) => {
 
   const handleChooseGender = (gender: GenderType) => {
     setGender(gender)
@@ -26,4 +26,4 @@ const ServicesGenderSelector = ({setGender}: ServicesGenderProps) => {
   )
 }
 
-export default ServicesGenderSelector
+export default PrestationsGenderSelector

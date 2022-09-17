@@ -4,24 +4,24 @@ import {ListBox} from 'primereact/listbox';
 
 //helpers & hooks imports
 import useFetch from '../../hooks/useFetch';
-import {services} from '../../constants/servicesConstants';
+import {prestations} from '../../constants/prestationsConstants';
 
 // component imports
 import Spinner from '../UI/Spinner';
 import ErrorToast from '../UI/ErrorToast';
-import ServicesGenderSelector from './ServicesGenderSelector';
+import PrestationsGenderSelector from './PrestationsGenderSelector';
 
 // crud imports
-import {fetchServices} from '../../crud/services/services.crud';
+import {fetchPrestations} from '../../crud/prestations/prestations.crud';
 
 // types imports
 import {categoryType, GenderType} from 'src/types/haircutsType';
 
-const Services = () => {
+const Prestations = () => {
   const [gender, setGender] = useState<GenderType>({reference: 'Man'})
   const {data: haircutsData, error: haircutsError, status: haircutStatus} = useFetch({
-    queryRepo: services.HAIRCUT,
-    apiCall: fetchServices(services.HAIRCUT),
+    queryRepo: prestations.HAIRCUT,
+    apiCall: fetchPrestations(prestations.HAIRCUT),
   });
 
   const prestationsByGender = useMemo(():categoryType[] => {
@@ -31,12 +31,12 @@ const Services = () => {
 
   return (
     <div>
-      <ServicesGenderSelector setGender={setGender}/>
-      <ListBox value={prestationsByGender} options={prestationsByGender} optionLabel='title' style={{width: '15rem', maxHeight: '20rem', overflow: 'auto'}} onChange={e => console.log(e.value.title)}/>
+      <PrestationsGenderSelector setGender={setGender}/>
+      <ListBox value={prestationsByGender} options={prestationsByGender} optionLabel='title' style={{width: '15rem', maxHeight: '20rem', overflow: 'auto'}} onChange={e => console.log(e.value)}/>
       <Spinner loading={haircutStatus} />
       <ErrorToast error={haircutsError} />
     </div>
   )
 }
 
-export default Services;
+export default Prestations;
