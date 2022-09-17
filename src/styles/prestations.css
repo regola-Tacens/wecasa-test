@@ -1,0 +1,7 @@
+.prestation-item {
+  display: flex;
+  justify-content: space-between;
+}
+.prestation-item_price {
+  min-width: 3.5rem;
+}
