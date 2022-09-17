@@ -1,6 +1,6 @@
 // library imports
 import React, {useMemo} from 'react';
-import {ListBox} from 'primereact/listbox';
+import {ListBox, ListBoxChangeParams} from 'primereact/listbox';
 
 // type imports
 import {categoryType, GenderType, HaircutType, prestationType} from 'src/types/haircutsType';
@@ -9,8 +9,9 @@ import {categoryType, GenderType, HaircutType, prestationType} from 'src/types/h
 import '../../styles/prestations.css'
 
 // helpers
-import {formatPrice} from '../../helpers/formatPrice';
-import {usePrestationsStore} from '../../store/prestationsStore';
+import {prestationsStoreType, usePrestationsStore} from '../../store/prestationsStore';
+import {computePrestationQuantity} from '../../helpers/computePrestationQuantity';
+import PrestationsListTemplate from './PrestationsListTemplate';
 
 type PrestationsListProps = {
   haircutsData: HaircutType,
@@ -18,27 +19,17 @@ type PrestationsListProps = {
 }
 
 const PrestationsList = ({haircutsData, gender}: PrestationsListProps) => {
-  const addPrestation = usePrestationsStore((state) => state.addPrestation)
-  const prestations = usePrestationsStore((state) => state.prestations)
+  const addPrestation = usePrestationsStore((state: any) => state.addPrestation)
+  const prestations: prestationsStoreType = usePrestationsStore((state: any) => state.prestations)
 
   const prestationsByGender = useMemo(():prestationType[] => {
     return haircutsData?.categories?.filter((category: categoryType) =>
       category.reference === gender.reference.toLowerCase())[0].prestations
   }, [gender, haircutsData?.categories]);
 
-  const prestationsListTemplate = (option: prestationType) => {
-    return (
-      <div className='prestation-item'>
-        <div className='prestation-item_title'>{option.title}</div>
-        <span className='prestation-item_price'>{formatPrice(option.price)} </span>
-      </div>
-    );
-  };
-  const handleAddPrestation = (e) => {
-    // TODO CHECK IF THE SAME PRESTATION EXISTS IN STORE
-    const prestationAlreadyInStore = prestations?.find(prest => prest.reference === e.value.reference)
-    const quantity = prestationAlreadyInStore ? prestationAlreadyInStore.quantity + 1 : 1
-    addPrestation(e.value, quantity)
+  const handleAddPrestation = (e: ListBoxChangeParams) => {
+    const quantity = computePrestationQuantity(prestations, gender, e)
+    addPrestation(e.value, quantity, gender.reference)
   }
 
   return (
@@ -49,12 +40,12 @@ const PrestationsList = ({haircutsData, gender}: PrestationsListProps) => {
         optionLabel='title'
         style={
           {
-            width: '20rem',
-            maxHeight: '250px',
+            width: '400px',
+            height: '200px',
             overflow: 'auto'}
         }
         onChange={handleAddPrestation}
-        itemTemplate={prestationsListTemplate}
+        itemTemplate={PrestationsListTemplate}
       />
     </div>
   )

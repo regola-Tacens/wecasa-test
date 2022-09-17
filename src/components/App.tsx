@@ -7,15 +7,20 @@ import {ReactQueryDevtools} from 'react-query/devtools';
 import Cart from './Cart/Cart';
 import Prestations from './Prestations/Prestations';
 
+// style imports
+import '../styles/index.css'
+
 const App = () => {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Prestations />
-      <Cart />
-      <ReactQueryDevtools initialIsOpen={false} />
-    </QueryClientProvider>
+    <div className='app'>
+      <QueryClientProvider client={queryClient}>
+        <Prestations />
+        <Cart />
+        <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+    </div>
   )
 }
 

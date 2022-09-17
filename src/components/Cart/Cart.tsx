@@ -2,10 +2,10 @@
 import React from 'react';
 
 // helpers & store imports
-import {usePrestationsStore} from '../../store/prestationsStore';
+import {prestationsStoreType, usePrestationsStore} from '../../store/prestationsStore';
 
 const Cart = () => {
-  const prestations = usePrestationsStore((state) => state.prestations)
+  const prestations: prestationsStoreType = usePrestationsStore((state: any) => state.prestations)
 
   return (
     <div>

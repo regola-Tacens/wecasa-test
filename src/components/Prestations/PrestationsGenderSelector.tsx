@@ -12,16 +12,17 @@ type ServicesGenderProps = {
 }
 
 const PrestationsGenderSelector = ({setGender}: ServicesGenderProps) => {
-
   const handleChooseGender = (gender: GenderType) => {
     setGender(gender)
   }
 
   return (
-    <div>
-      <Button onClick={() => handleChooseGender({reference: 'Man'})}>Man</Button>
-      <Button onClick={() => handleChooseGender({reference: 'Woman'})}>Woman</Button>
-      <Button onClick={() => handleChooseGender({reference: 'Child'})}>Child</Button>
+    <div className='prestations-gender'>
+      {
+        ['Man', 'Woman', 'Child'].map((gender: any) => (
+          <Button key={gender} onClick={() => handleChooseGender({reference: gender})}>{gender}</Button>
+        ))
+      }
     </div>
   )
 }

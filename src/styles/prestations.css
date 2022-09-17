@@ -5,3 +5,9 @@
 .prestation-item_price {
   min-width: 3.5rem;
 }
+.prestations-gender {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
