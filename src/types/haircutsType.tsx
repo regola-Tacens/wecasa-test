@@ -2,7 +2,7 @@ export type prestationType = {
   title: string,
   reference: string,
   duration: number,
-  price:number,
+  price: number,
   quantity?: number
 }
 
