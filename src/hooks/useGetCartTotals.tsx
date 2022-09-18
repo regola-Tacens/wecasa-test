@@ -1,31 +1,32 @@
 // library imports
 import React from 'react'
-import {GenderTypeReference, prestationType} from '../types/haircutsType'
+
+// helpers imports
 import {formatPrice} from '../helpers/formatPrice'
 
 // type imports
-import {prestationsStoreType, usePrestationsStore} from '../store/prestationsStore'
+import {GenderTypeReference, prestationType} from '../types/haircutsType'
+import {prestationsStoreType, PrestationState, usePrestationsStore} from '../store/prestationsStore'
 
 // constant imports
 import {gendersConstants} from '../constants/commonConstants'
 
 const useGetCartTotals = () => {
-  const prestations: prestationsStoreType = usePrestationsStore((state: any) => state.prestations)
+  const prestations: prestationsStoreType = usePrestationsStore((state: PrestationState) => state.prestations)
 
   let totalDuration = 0
   let totalPrice = 0
-  type genderType = GenderTypeReference
   const genders = Object.keys(gendersConstants)
 
-  const totalDurationByGender = (gender: genderType) => prestations?.[gender]?.reduce((a: number, c: prestationType) => {
+  const totalDurationByGender = (gender: GenderTypeReference) => prestations?.[gender]?.reduce((a: number, c: prestationType) => {
     return a + (c.duration * (c.quantity || 1))
   }, 0)
 
-  const totalPriceByGender = (gender: 'Man' | 'Woman' | 'Child') => prestations?.[gender]?.reduce((a: number, c: prestationType) => {
+  const totalPriceByGender = (gender: GenderTypeReference) => prestations?.[gender]?.reduce((a: number, c: prestationType) => {
     return a + Number(formatPrice(c.price) * (c.quantity || 1))
   }, 0)
 
-  for (let gender of genders as genderType[]) {
+  for (let gender of genders as GenderTypeReference[]) {
     totalDuration += totalDurationByGender(gender)
     totalPrice += totalPriceByGender(gender)
   }

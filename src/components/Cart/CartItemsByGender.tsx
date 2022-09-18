@@ -2,7 +2,7 @@
 import React from 'react';
 
 // type imports
-import {prestationsStoreType, usePrestationsStore} from '../../store/prestationsStore'
+import {prestationsStoreType, PrestationState, usePrestationsStore} from '../../store/prestationsStore'
 import {GenderTypeReference} from '../../types/haircutsType';
 
 // component imports
@@ -18,7 +18,7 @@ type CartItemsByGenderProps = {
   gender: GenderTypeReference,
 }
 const CartItemsByGender = ({gender}: CartItemsByGenderProps) => {
-  const prestations: prestationsStoreType = usePrestationsStore((state: any) => state.prestations)
+  const prestations: prestationsStoreType = usePrestationsStore((state: PrestationState) => state.prestations)
 
   // do not show block if no prestations
   if (prestations?.[gender]?.length === 0) return null

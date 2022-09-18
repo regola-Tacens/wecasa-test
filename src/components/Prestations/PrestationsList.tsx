@@ -9,7 +9,7 @@ import {categoryType, GenderType, HaircutType, prestationType} from '../../types
 import '../../styles/prestations.css'
 
 // helpers
-import {prestationsStoreType, usePrestationsStore} from '../../store/prestationsStore'
+import {PrestationState, usePrestationsStore} from '../../store/prestationsStore'
 import {computePrestationQuantity} from '../../helpers/computePrestationQuantity'
 import PrestationsListTemplate from './PrestationsListTemplate'
 
@@ -19,8 +19,7 @@ type PrestationsListProps = {
 }
 
 const PrestationsList = ({haircutsData, gender}: PrestationsListProps) => {
-  const addPrestation = usePrestationsStore((state: any) => state.addPrestation)
-  const prestations: prestationsStoreType = usePrestationsStore((state: any) => state.prestations)
+  const {prestations, addPrestation} = usePrestationsStore((state: PrestationState) => state)
 
   const prestationsByGender = useMemo(():prestationType[] => {
     return haircutsData?.categories?.filter((category: categoryType) =>

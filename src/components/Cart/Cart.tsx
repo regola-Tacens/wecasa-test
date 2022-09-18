@@ -6,7 +6,6 @@ import CartItemsByGender from './CartItemsByGender'
 import CartTotal from './CartTotal'
 
 const Cart = () => {
-
   return (
     <div>
       <CartItemsByGender gender='Man' />

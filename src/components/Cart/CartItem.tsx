@@ -3,7 +3,7 @@ import React from 'react';
 
 //helpers imports
 import {formatMultipliedPrice} from '../../helpers/formatPrice';
-import {usePrestationsStore} from '../../store/prestationsStore';
+import {PrestationState, usePrestationsStore} from '../../store/prestationsStore';
 
 // component imports
 import {Button} from 'primereact/button';
@@ -20,9 +20,7 @@ type CartItemProps = {
 }
 const CartItem = ({prestation, gender}: CartItemProps) => {
   const {quantity, title, price} = prestation
-  const removePrestation = usePrestationsStore((state: any) => state.removePrestation)
-  const resetPrestation = usePrestationsStore((state: any) => state.resetPrestation)
-
+  const {removePrestation, resetPrestation} = usePrestationsStore((state:PrestationState) => state)
   const handleDeletePrestation = () => {
     quantity && quantity < 2 ?
       resetPrestation(prestation, gender) :

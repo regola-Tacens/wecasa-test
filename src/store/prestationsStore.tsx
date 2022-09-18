@@ -15,13 +15,20 @@ export type prestationsStoreType = {
     'Child': prestationType[]
 }
 
-export type presentationsStoreStateType = {
+export type PresentationsStoreStateType = {
   prestations: prestationsStoreType
 }
 
-export const usePrestationsStore = create((set) => ({
+export type PrestationState = {
+ prestations: prestationsStoreType,
+ addPrestation: (prestation: prestationType, quantity: number, gender: GenderTypeReference) => void,
+ removePrestation: (prestation: prestationType, gender: GenderTypeReference, currentQuantity?: number) => void,
+ resetPrestation: (prestation: prestationType, gender: GenderTypeReference) => void
+}
+
+export const usePrestationsStore = create<PrestationState>((set) => ({
   prestations: initialPrestations,
-  addPrestation: (prestation: prestationType, quantity: number, gender: GenderTypeReference) => set((state: presentationsStoreStateType) => ({
+  addPrestation: (prestation: prestationType, quantity: number, gender: GenderTypeReference) => set((state: PresentationsStoreStateType) => ({
     prestations: {...state.prestations, [gender]: [
       ...state.prestations?.[gender]?.filter(prest => prest.reference !== prestation.reference)
       , {
@@ -29,15 +36,15 @@ export const usePrestationsStore = create((set) => ({
       }
     ]}
   })),
-  removePrestation: (prestation: prestationType, gender: GenderTypeReference, currentQuantity: number) => set((state: presentationsStoreStateType) => ({
+  removePrestation: (prestation: prestationType, gender: GenderTypeReference, currentQuantity?: number) => set((state: PresentationsStoreStateType) => ({
     prestations: {...state.prestations, [gender]: [
       ...state.prestations?.[gender]?.filter(prest => prest.reference !== prestation.reference)
       , {
-        ...prestation, quantity: currentQuantity -1
+        ...prestation, quantity: currentQuantity && currentQuantity -1
       }
     ]}
   })),
-  resetPrestation: (prestation: prestationType, gender: GenderTypeReference) => set((state: presentationsStoreStateType) => ({
+  resetPrestation: (prestation: prestationType, gender: GenderTypeReference) => set((state: PresentationsStoreStateType) => ({
     prestations: {...state.prestations, [gender]: [
       ...state.prestations?.[gender]?.filter(prest => prest.reference !== prestation.reference)
     ]}
