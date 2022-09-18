@@ -2,7 +2,7 @@
 import create from 'zustand'
 
 // type imports
-import {prestationType} from 'src/types/haircutsType'
+import {GenderTypeReference, prestationType} from '../types/haircutsType'
 
 const initialPrestations = {
   'Man': [],
@@ -21,12 +21,25 @@ export type presentationsStoreStateType = {
 
 export const usePrestationsStore = create((set) => ({
   prestations: initialPrestations,
-  addPrestation: (prestation: prestationType, quantity: number, gender: 'Man' | 'Woman' | 'Child') => set((state: presentationsStoreStateType) => ({
+  addPrestation: (prestation: prestationType, quantity: number, gender: GenderTypeReference) => set((state: presentationsStoreStateType) => ({
     prestations: {...state.prestations, [gender]: [
       ...state.prestations?.[gender]?.filter(prest => prest.reference !== prestation.reference)
       , {
         ...prestation, quantity: quantity
       }
+    ]}
+  })),
+  removePrestation: (prestation: prestationType, gender: GenderTypeReference, currentQuantity: number) => set((state: presentationsStoreStateType) => ({
+    prestations: {...state.prestations, [gender]: [
+      ...state.prestations?.[gender]?.filter(prest => prest.reference !== prestation.reference)
+      , {
+        ...prestation, quantity: currentQuantity -1
+      }
+    ]}
+  })),
+  resetPrestation: (prestation: prestationType, gender: GenderTypeReference) => set((state: presentationsStoreStateType) => ({
+    prestations: {...state.prestations, [gender]: [
+      ...state.prestations?.[gender]?.filter(prest => prest.reference !== prestation.reference)
     ]}
   }))
 }))

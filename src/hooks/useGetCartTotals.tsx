@@ -30,7 +30,7 @@ const useGetCartTotals = () => {
     totalPrice += totalPriceByGender(gender)
   }
 
-  return [totalDuration, totalPrice]
+  return [totalDuration, totalPrice.toFixed(2)]
 }
 
 export default useGetCartTotals

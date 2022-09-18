@@ -31,7 +31,11 @@ const CartItemsByGender = ({gender}: CartItemsByGenderProps) => {
       <h3>{gendersConstants[gender].title}</h3>
       {
         prestations?.[gender]?.map(prestation => (
-          <CartItem key={prestation.title} prestation={prestation} />
+          <CartItem
+            key={prestation.title}
+            prestation={prestation}
+            gender={gender}
+          />
         ))
       }
     </div>

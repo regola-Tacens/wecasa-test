@@ -5,6 +5,15 @@
 .cart-item {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.cart-item__price {
+  min-width: 85px;
+  margin-left: 20px;
+}
+.cart-item__price button {
+  float: right;
 }
 .cart-total {
   display: flex;

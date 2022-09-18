@@ -1,5 +1,7 @@
 // library imports
 import React from 'react';
+
+// helpers & hooks imports
 import useGetCartTotals from '../../hooks/useGetCartTotals';
 
 const CartTotal = () => {

@@ -23,6 +23,7 @@ const PrestationsGenderSelector = ({setGender}: ServicesGenderProps) => {
         Object.keys(gendersConstants).map((gender: any) => (
           <Button
             key={gender}
+            className='p-button-rounded'
             // @ts-ignore
             onClick={() => handleChooseGender({reference: gendersConstants[gender].reference})}
           >
