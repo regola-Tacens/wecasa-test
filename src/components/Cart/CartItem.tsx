@@ -9,13 +9,13 @@ import {PrestationState, usePrestationsStore} from '../../store/prestationsStore
 import {Button} from 'primereact/button';
 
 // type imports
-import {GenderTypeReference, prestationType} from '../../types/haircutsType';
+import {GenderTypeReference, PrestationType} from '../../types/haircutsType';
 
 // style imports
 import '../../styles/cart.css'
 
 type CartItemProps = {
-  prestation: prestationType,
+  prestation: PrestationType,
   gender: GenderTypeReference
 }
 const CartItem = ({prestation, gender}: CartItemProps) => {

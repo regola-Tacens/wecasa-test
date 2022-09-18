@@ -3,7 +3,7 @@ import React, {useMemo} from 'react'
 import {ListBox, ListBoxChangeParams} from 'primereact/listbox'
 
 // type imports
-import {categoryType, GenderType, HaircutType, prestationType} from '../../types/haircutsType'
+import {CategoryType, GenderType, HaircutType, PrestationType} from '../../types/haircutsType'
 
 // style imports
 import '../../styles/prestations.css'
@@ -21,8 +21,8 @@ type PrestationsListProps = {
 const PrestationsList = ({haircutsData, gender}: PrestationsListProps) => {
   const {prestations, addPrestation} = usePrestationsStore((state: PrestationState) => state)
 
-  const prestationsByGender = useMemo(():prestationType[] => {
-    return haircutsData?.categories?.filter((category: categoryType) =>
+  const prestationsByGender = useMemo(():PrestationType[] => {
+    return haircutsData?.categories?.filter((category: CategoryType) =>
       category.reference === gender.reference.toLowerCase())[0].prestations
   }, [gender, haircutsData?.categories]);
 

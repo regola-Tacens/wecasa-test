@@ -5,9 +5,9 @@ import React from 'react'
 import {formatPrice} from '../../helpers/formatPrice'
 
 // type imports
-import {prestationType} from '../../types/haircutsType'
+import {PrestationType} from '../../types/haircutsType'
 
-const PrestationsListTemplate = (option: prestationType) => {
+const PrestationsListTemplate = (option: PrestationType) => {
   return (
     <div className='prestation-item'>
       <div className='prestation-item_title'>{option.title}</div>

@@ -1,4 +1,4 @@
-export type prestationType = {
+export type PrestationType = {
   title: string,
   reference: string,
   duration: number,
@@ -13,12 +13,12 @@ export type GenderType = {
   reference: GenderTypeReference
 }
 
-export type categoryType = GenderType & {
-  prestations: prestationType[]
+export type CategoryType = GenderType & {
+  prestations: PrestationType[]
 }
 
 export type HaircutType = {
   title: string,
   reference: string,
-  categories: categoryType[]
+  categories: CategoryType[]
 }

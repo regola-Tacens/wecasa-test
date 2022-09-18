@@ -5,7 +5,7 @@ import React from 'react'
 import {formatPrice} from '../helpers/formatPrice'
 
 // type imports
-import {GenderTypeReference, prestationType} from '../types/haircutsType'
+import {GenderTypeReference, PrestationType} from '../types/haircutsType'
 import {prestationsStoreType, PrestationState, usePrestationsStore} from '../store/prestationsStore'
 
 // constant imports
@@ -18,11 +18,11 @@ const useGetCartTotals = () => {
   let totalPrice = 0
   const genders = Object.keys(gendersConstants)
 
-  const totalDurationByGender = (gender: GenderTypeReference) => prestations?.[gender]?.reduce((a: number, c: prestationType) => {
+  const totalDurationByGender = (gender: GenderTypeReference) => prestations?.[gender]?.reduce((a: number, c: PrestationType) => {
     return a + (c.duration * (c.quantity || 1))
   }, 0)
 
-  const totalPriceByGender = (gender: GenderTypeReference) => prestations?.[gender]?.reduce((a: number, c: prestationType) => {
+  const totalPriceByGender = (gender: GenderTypeReference) => prestations?.[gender]?.reduce((a: number, c: PrestationType) => {
     return a + Number(formatPrice(c.price) * (c.quantity || 1))
   }, 0)
 

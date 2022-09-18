@@ -2,7 +2,7 @@
 import create from 'zustand'
 
 // type imports
-import {GenderTypeReference, prestationType} from '../types/haircutsType'
+import {GenderTypeReference, PrestationType} from '../types/haircutsType'
 
 const initialPrestations = {
   'Man': [],
@@ -10,9 +10,9 @@ const initialPrestations = {
   'Child': []
 }
 export type prestationsStoreType = {
-    'Man': prestationType[],
-    'Woman': prestationType[],
-    'Child': prestationType[]
+    'Man': PrestationType[],
+    'Woman': PrestationType[],
+    'Child': PrestationType[]
 }
 
 export type PresentationsStoreStateType = {
@@ -21,14 +21,14 @@ export type PresentationsStoreStateType = {
 
 export type PrestationState = {
  prestations: prestationsStoreType,
- addPrestation: (prestation: prestationType, quantity: number, gender: GenderTypeReference) => void,
- removePrestation: (prestation: prestationType, gender: GenderTypeReference, currentQuantity?: number) => void,
- resetPrestation: (prestation: prestationType, gender: GenderTypeReference) => void
+ addPrestation: (prestation: PrestationType, quantity: number, gender: GenderTypeReference) => void,
+ removePrestation: (prestation: PrestationType, gender: GenderTypeReference, currentQuantity?: number) => void,
+ resetPrestation: (prestation: PrestationType, gender: GenderTypeReference) => void
 }
 
 export const usePrestationsStore = create<PrestationState>((set) => ({
   prestations: initialPrestations,
-  addPrestation: (prestation: prestationType, quantity: number, gender: GenderTypeReference) => set((state: PresentationsStoreStateType) => ({
+  addPrestation: (prestation: PrestationType, quantity: number, gender: GenderTypeReference) => set((state: PresentationsStoreStateType) => ({
     prestations: {...state.prestations, [gender]: [
       ...state.prestations?.[gender]?.filter(prest => prest.reference !== prestation.reference)
       , {
@@ -36,7 +36,7 @@ export const usePrestationsStore = create<PrestationState>((set) => ({
       }
     ]}
   })),
-  removePrestation: (prestation: prestationType, gender: GenderTypeReference, currentQuantity?: number) => set((state: PresentationsStoreStateType) => ({
+  removePrestation: (prestation: PrestationType, gender: GenderTypeReference, currentQuantity?: number) => set((state: PresentationsStoreStateType) => ({
     prestations: {...state.prestations, [gender]: [
       ...state.prestations?.[gender]?.filter(prest => prest.reference !== prestation.reference)
       , {
@@ -44,7 +44,7 @@ export const usePrestationsStore = create<PrestationState>((set) => ({
       }
     ]}
   })),
-  resetPrestation: (prestation: prestationType, gender: GenderTypeReference) => set((state: PresentationsStoreStateType) => ({
+  resetPrestation: (prestation: PrestationType, gender: GenderTypeReference) => set((state: PresentationsStoreStateType) => ({
     prestations: {...state.prestations, [gender]: [
       ...state.prestations?.[gender]?.filter(prest => prest.reference !== prestation.reference)
     ]}
