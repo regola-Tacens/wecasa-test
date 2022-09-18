@@ -1,17 +1,17 @@
 // library imports
-import React, {useMemo} from 'react';
-import {ListBox, ListBoxChangeParams} from 'primereact/listbox';
+import React, {useMemo} from 'react'
+import {ListBox, ListBoxChangeParams} from 'primereact/listbox'
 
 // type imports
-import {categoryType, GenderType, HaircutType, prestationType} from 'src/types/haircutsType';
+import {categoryType, GenderType, HaircutType, prestationType} from '../../types/haircutsType'
 
 // style imports
 import '../../styles/prestations.css'
 
 // helpers
-import {prestationsStoreType, usePrestationsStore} from '../../store/prestationsStore';
-import {computePrestationQuantity} from '../../helpers/computePrestationQuantity';
-import PrestationsListTemplate from './PrestationsListTemplate';
+import {prestationsStoreType, usePrestationsStore} from '../../store/prestationsStore'
+import {computePrestationQuantity} from '../../helpers/computePrestationQuantity'
+import PrestationsListTemplate from './PrestationsListTemplate'
 
 type PrestationsListProps = {
   haircutsData: HaircutType,

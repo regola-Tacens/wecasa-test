@@ -6,9 +6,11 @@ export type prestationType = {
   quantity?: number
 }
 
+export type GenderTypeReference = 'Man' | 'Woman' | 'Child'
+
 export type GenderType = {
   title?: 'Homme' | 'Femme' | 'Enfant',
-  reference: 'Man' | 'Woman' | 'Child'
+  reference: GenderTypeReference
 }
 
 export type categoryType = GenderType & {

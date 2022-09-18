@@ -1,6 +1,6 @@
 export const formatPrice = (price: number) => {
-  const firstTwoDigits = Number(price.toString().substring(0, 2));
-  const remainingDigits = Number(price.toString().substring(2, 4));
+  const firstTwoDigits = Number(price.toString().substring(0, 2))
+  const remainingDigits = Number(price.toString().substring(2, 4))
   return parseFloat((firstTwoDigits + (remainingDigits/100)).toFixed(2))
 }
 

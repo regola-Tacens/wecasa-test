@@ -1,11 +1,12 @@
 // library imports
-import React, {Dispatch, SetStateAction} from 'react';
+import React, {Dispatch, SetStateAction} from 'react'
 
 // component imports
-import {Button} from 'primereact/button';
+import {Button} from 'primereact/button'
 
 // type imports
-import {GenderType} from 'src/types/haircutsType';
+import {GenderType} from '../../types/haircutsType'
+import {gendersConstants} from '../../constants/commonConstants'
 
 type ServicesGenderProps = {
   setGender: Dispatch<SetStateAction<GenderType>>
@@ -19,8 +20,15 @@ const PrestationsGenderSelector = ({setGender}: ServicesGenderProps) => {
   return (
     <div className='prestations-gender'>
       {
-        ['Man', 'Woman', 'Child'].map((gender: any) => (
-          <Button key={gender} onClick={() => handleChooseGender({reference: gender})}>{gender}</Button>
+        Object.keys(gendersConstants).map((gender: any) => (
+          <Button
+            key={gender}
+            // @ts-ignore
+            onClick={() => handleChooseGender({reference: gendersConstants[gender].reference})}
+          >
+            {/* @ts-ignore */}
+            {gendersConstants[gender].title}
+          </Button>
         ))
       }
     </div>

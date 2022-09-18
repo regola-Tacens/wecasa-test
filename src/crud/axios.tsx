@@ -1,5 +1,5 @@
 // library import
-import axios from 'axios';
+import axios from 'axios'
 
 export const weCasaAPI = axios.create({
   baseURL: import.meta.env.VITE_WEACASA_BASEURL,

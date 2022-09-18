@@ -1,8 +1,8 @@
 // library imports
-import {weCasaAPI} from '../axios';
+import {weCasaAPI} from '../axios'
 
 //types imports
-import {HaircutType} from 'src/types/haircutsType';
+import {HaircutType} from 'src/types/haircutsType'
 
 export const fetchPrestations = (service: string) => {
   return weCasaAPI

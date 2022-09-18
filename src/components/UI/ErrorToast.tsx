@@ -1,6 +1,6 @@
 // library imports
-import React, {useRef, useEffect} from 'react';
-import {Toast} from 'primereact/toast';
+import React, {useRef, useEffect} from 'react'
+import {Toast} from 'primereact/toast'
 
 type ErrorToastProps = {
   error: any,
@@ -8,7 +8,7 @@ type ErrorToastProps = {
 }
 
 const ErrorToast = ({error, message}: ErrorToastProps) => {
-  const toast = useRef<any | null>(null);
+  const toast = useRef<any | null>(null)
 
   useEffect(() => {
     if(toast?.current && error) {

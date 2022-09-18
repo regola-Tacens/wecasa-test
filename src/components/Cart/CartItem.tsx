@@ -3,7 +3,7 @@ import React from 'react';
 import {formatMultipliedPrice} from '../../helpers/formatPrice';
 
 // type imports
-import {prestationType} from 'src/types/haircutsType';
+import {prestationType} from '../../types/haircutsType';
 
 type CartItemProps = {
   prestation: prestationType

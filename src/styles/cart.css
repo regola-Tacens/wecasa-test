@@ -2,8 +2,11 @@
   width: 400px;
   padding: 10px;
 }
-
 .cart-item {
   display: flex;
   justify-content: space-between;
+}
+.cart-total {
+  display: flex;
+  gap: 20px;
 }

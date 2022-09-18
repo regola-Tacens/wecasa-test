@@ -7,6 +7,6 @@ type useFetchProps = {
 }
 
 const useFetch = ({queryRepo, apiCall}: useFetchProps) => {
-  return useQuery(queryRepo, async() => await apiCall);
+  return useQuery(queryRepo, async() => await apiCall)
 }
 export default useFetch;

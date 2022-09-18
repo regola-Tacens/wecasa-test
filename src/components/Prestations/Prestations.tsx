@@ -1,21 +1,21 @@
 // library imports
-import React, {useState} from 'react';
+import React, {useState} from 'react'
 
 //helpers & hooks imports
-import useFetch from '../../hooks/useFetch';
-import {prestations} from '../../constants/prestationsConstants';
+import useFetch from '../../hooks/useFetch'
+import {prestations} from '../../constants/prestationsConstants'
 
 // component imports
-import Spinner from '../UI/Spinner';
-import ErrorToast from '../UI/ErrorToast';
-import PrestationsGenderSelector from './PrestationsGenderSelector';
-import PrestationsList from './PrestationsList';
+import Spinner from '../UI/Spinner'
+import ErrorToast from '../UI/ErrorToast'
+import PrestationsGenderSelector from './PrestationsGenderSelector'
+import PrestationsList from './PrestationsList'
 
 // crud imports
-import {fetchPrestations} from '../../crud/prestations/prestations.crud';
+import {fetchPrestations} from '../../crud/prestations/prestations.crud'
 
 // types imports
-import {GenderType} from 'src/types/haircutsType';
+import {GenderType} from '../../types/haircutsType'
 
 const Prestations = () => {
   const [gender, setGender] = useState<GenderType>({reference: 'Man'})

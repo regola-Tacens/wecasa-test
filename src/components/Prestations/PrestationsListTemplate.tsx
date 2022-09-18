@@ -1,11 +1,11 @@
 // library imports
-import React from 'react';
+import React from 'react'
 
 // helpers imports
-import {formatPrice} from '../../helpers/formatPrice';
+import {formatPrice} from '../../helpers/formatPrice'
 
 // type imports
-import {prestationType} from '../../types/haircutsType';
+import {prestationType} from '../../types/haircutsType'
 
 const PrestationsListTemplate = (option: prestationType) => {
   return (

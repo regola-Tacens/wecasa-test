@@ -1,5 +1,5 @@
 // library imports
-import React from 'react';
+import React from 'react'
 import {ProgressSpinner} from 'primereact/progressspinner'
 
 // style imports
