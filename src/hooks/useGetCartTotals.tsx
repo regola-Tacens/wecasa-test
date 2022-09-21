@@ -13,7 +13,6 @@ import {gendersConstants} from '../constants/commonConstants'
 
 const useGetCartTotals = () => {
   const prestations: prestationsStoreType = usePrestationsStore((state: PrestationState) => state.prestations)
-
   let totalDuration = 0
   let totalPrice = 0
   const genders = Object.keys(gendersConstants)
@@ -22,9 +21,9 @@ const useGetCartTotals = () => {
     return a + (c.duration * (c.quantity || 1))
   }, 0)
 
-  const totalPriceByGender = (gender: GenderTypeReference) => prestations?.[gender]?.reduce((a: number, c: PrestationType) => {
+  const totalPriceByGender = ((gender: GenderTypeReference) => prestations?.[gender]?.reduce((a: number, c: PrestationType) => {
     return a + Number(formatPrice(c.price) * (c.quantity || 1))
-  }, 0)
+  }, 0))
 
   for (let gender of genders as GenderTypeReference[]) {
     totalDuration += totalDurationByGender(gender)

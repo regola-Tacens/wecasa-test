@@ -15,10 +15,10 @@ import PrestationsList from './PrestationsList'
 import {fetchPrestations} from '../../crud/prestations/prestations.crud'
 
 // types imports
-import {GenderType} from '../../types/haircutsType'
+import {GenderType, GenderTypeReference} from '../../types/haircutsType'
 
 const Prestations = () => {
-  const [gender, setGender] = useState<GenderType>({reference: 'Man'})
+  const [gender, setGender] = useState<{reference: GenderTypeReference}>({reference: 'Man'})
   const {data: haircutsData, error: haircutsError, status: haircutStatus} = useFetch({
     queryRepo: prestations.HAIRCUT,
     apiCall: fetchPrestations(prestations.HAIRCUT),

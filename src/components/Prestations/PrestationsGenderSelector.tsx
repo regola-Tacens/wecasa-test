@@ -5,30 +5,28 @@ import React, {Dispatch, SetStateAction} from 'react'
 import {Button} from 'primereact/button'
 
 // type imports
-import {GenderType} from '../../types/haircutsType'
+import {GenderTypeReference} from '../../types/haircutsType'
 import {gendersConstants} from '../../constants/commonConstants'
 
 type ServicesGenderProps = {
-  setGender: Dispatch<SetStateAction<GenderType>>
+  setGender: Dispatch<SetStateAction<{reference: GenderTypeReference}>>
 }
 
 const PrestationsGenderSelector = ({setGender}: ServicesGenderProps) => {
-  const handleChooseGender = (gender: GenderType) => {
+  const handleChooseGender = (gender: {reference: GenderTypeReference}) => {
     setGender(gender)
   }
 
   return (
     <div className='prestations-gender'>
       {
-        Object.keys(gendersConstants).map((gender: any) => (
+        Object.keys(gendersConstants).map((gender) => (
           <Button
             key={gender}
             className='p-button-rounded'
-            // @ts-ignore
-            onClick={() => handleChooseGender({reference: gendersConstants[gender].reference})}
+            onClick={() => handleChooseGender({reference: gendersConstants[gender as keyof typeof gendersConstants].reference})}
           >
-            {/* @ts-ignore */}
-            {gendersConstants[gender].title}
+            {gendersConstants[gender as keyof typeof gendersConstants].title}
           </Button>
         ))
       }
